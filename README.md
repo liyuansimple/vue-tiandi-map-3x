@@ -8,7 +8,7 @@
 #### 安装教程
 
 ```javascript
-npm i --save vue-baidu-map-3x
+npm i --save vue-tiandi-map-3x
 ```
 
 #### 初始化
@@ -16,7 +16,7 @@ npm i --save vue-baidu-map-3x
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
-import TiandiMap from '../components/index.js'
+import TiandiMap from 'vue-tiandi-map-3x'
 
 const app = createApp(App)
 app.use(TiandiMap,{

@@ -1,6 +1,6 @@
 {
   "name": "vue-tiandi-map-3x",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "/components/index.js",
   "scripts": {
@@ -13,7 +13,8 @@
     "url": "https://gitee.com/liyuanboy/vue-tiandi-map.git"
   },
   "keywords": [
-    "vue2.0",
+    "vue3.0",
+    "map",
     "tiandi"
   ],
   "author": "liyuan",
