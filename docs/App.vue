@@ -1,0 +1,26 @@
+<template>
+  <tiandi-map ak="12bc70e7e8d603fe4253fd0b69e21744" :zoom="18" @ready="mapReady">
+    <t-marker :position="loca" />
+  </tiandi-map>
+</template>
+<script>
+export default {
+  data() {
+    return{
+      loca: {lng: 113.72891, lat: 34.77358}
+    }
+  },
+  methods: {
+    mapReady({map, T}){
+      // 
+      const locationPointer =  {lng: 113.72891, lat: 34.77358}
+      // 设置中心点坐标
+      map.centerAndZoom(new T.LngLat(locationPointer.lng, locationPointer.lat), 18)
+    }
+  }
+}
+</script>
+<style>
+	div{color:red;}
+</style>
+
