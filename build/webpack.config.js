@@ -5,17 +5,21 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: './docs/main.js',	//打包的入口
-  //设置打包的出口
+  // 设置打包的出口
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, '../dist'),
   },
+  devtool: 'inline-source-map',	//错误追踪工具
   //设置别名
   resolve: {
     alias: {
       '@': path.join(__dirname, '../docs'),
       '@components': path.join(__dirname, '../components')
     },
+  },
+  devServer: {
+    static: '../dist'
   },
   //添加模块
   module: {
@@ -45,16 +49,12 @@ module.exports = {
       },
     ],
   },
-  devtool: 'inline-source-map',	//错误追踪工具
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',	//配置输出后的html文件名（可携带目录）
       template: 'docs/public/index.html'	//配置模板
     })
-  ],
-  devServer: {
-    static: '../dist'
-  }
+  ]
 };
 

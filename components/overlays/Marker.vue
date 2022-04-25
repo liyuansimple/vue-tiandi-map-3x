@@ -36,11 +36,10 @@ export default {
   },
   watch: {
     'position.lng' (val, oldVal) {
-      const {T, originInstance, position, renderByParent, $parent} = this
+      const {T, originInstance, position} = this
       if (val !== oldVal && val >= -180 && val <= 180 && T) {
         originInstance.setLngLat(createLngLat(T, {lng: val, lat: position.lat}))
       }
-      renderByParent && $parent.reload()
     },
     'position.lat' (val, oldVal) {
       const {T, originInstance, position} = this
@@ -70,20 +69,23 @@ export default {
   },
   methods: {
     reload() {
-      this && this.T && this.$nextTick(() => {
+      this && this.map && this.$nextTick(() => {
         this.unload()
         this.$nextTick(this.load)
       })
     },
     load () {
-      const {T, map, position, icon, dragging, zIndexOffset, opacity, title, $parent} = this
+      const {T, map, position, icon, dragging, zIndexOffset, opacity, title } = this
       const overlay = new T.Marker(new T.LngLat(position.lng, position.lat), {
-        icon: icon && Object.keys(icon).length && createIcon(T, icon),
         draggable: dragging,
         zIndexOffset,
         opacity,
         title
       })
+      try {
+        const markerIcon = icon && Object.keys(icon).length && createIcon(T, icon)
+        markerIcon && overlay.setIcon(markerIcon)
+      } catch (error) {}
       this.originInstance = overlay
       map.addOverLay(overlay)
     },

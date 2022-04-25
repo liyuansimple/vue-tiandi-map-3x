@@ -1,5 +1,6 @@
 <template>
 <div style="width: 100%; height: 100%">
+  <div class="toolTip" v-if="loading != 'success'">{{ loadingTest  }}</div>
   <div ref="view" style="width: 100%; height: 100%"></div>
   <slot></slot>
 </div>
@@ -8,7 +9,6 @@
 <script>
 import { provide, ref } from "vue"
 import {checkType} from '../base/util.js'
-
 export default {
   name: 'tiandi-map',
   props: {
@@ -37,6 +37,11 @@ export default {
     zoom: {
       type: Number,
       default: 18
+    }
+  },
+  data() {
+    return {
+      loading: 'pending'
     }
   },
   watch: {
@@ -85,6 +90,18 @@ export default {
   },
   mounted () {
     this.reset()
+  },
+  computed: {
+    loadingTest() {
+      switch (this.loading) {
+        case 'pending':
+          return '正在加载天地图....'
+        case 'fail':
+          return '天地图加载失败....'
+        default:
+          return null
+      }
+    }
   },
   methods: {
     /**
@@ -143,10 +160,15 @@ export default {
         const ak = this.ak || this._TMap().ak
         window.T = {}
         window.T._preloader = new Promise((resolve, reject) => {
+          this.loading = 'pending'
           const $script = document.createElement('script')
           $script.type = 'text/javascript'
           $script.onload = () => {
+            this.loading = 'success'
             resolve(window.T)
+          }
+          $script.onerror = () => {
+            this.loading = 'fail'
           }
           window.document.body.appendChild($script)
           $script.src = `http://api.tianditu.gov.cn/api?v=4.0&tk=${ak}`
@@ -181,4 +203,13 @@ export default {
   }
 }
 </script>
+<style scoped>
+.toolTip{
+  position: fixed;
+  padding-top: 50px;
+  text-align: center;
+  width: 100%; 
+  height: 100%
+}
+</style>
 

@@ -1,5 +1,5 @@
 <template>
-  <tiandi-map ak="" :zoom="18" @ready="mapReady">
+  <tiandi-map :zoom="18" @ready="mapReady">
     <t-marker :position="loca" />
   </tiandi-map>
 </template>
