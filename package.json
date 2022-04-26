@@ -1,8 +1,8 @@
 {
   "name": "vue-tiandi-map-3x",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
-  "main": "./components/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack serve --mode development --config build/webpack.docs.config.js",
     "build": "webpack --config build/webpack.prod.config.js",
