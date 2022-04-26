@@ -42,6 +42,3 @@ app.mount('#app')
 }
 </style>
 ```
-## 文档
-
-[Contributing Guide](https://gitee.com/liyuanboy/vue-tiandi-map/tree/master)
