@@ -30,7 +30,7 @@ export default {
     },
     // 地图的初始化中心点
     center: {
-      type: Object,
+      type: [Object,String],
       default: () => ({lng: 116.41239, lat: 39.97569 })
     },
     // 地图的初始化级别
@@ -48,7 +48,7 @@ export default {
     center (val, oldVal) {
       const {map, zoom} = this
       if (checkType(val) === 'String' && val !== oldVal) {
-        map.centerAndZoom(new T.LngLat(val.lng, val.lat), zoom)
+        map.centerAndZoom(new T.LngLat(val), zoom)
       }
     },
     'center.lng' (val, oldVal) {
@@ -144,7 +144,7 @@ export default {
     getCenterPoint () {
       const {center} = this
       switch (checkType(center)) {
-        case 'String': return center
+        case 'String': return new T.LngLat(center)
         case 'Object': return new T.LngLat(center.lng, center.lat)
         default: return new T.LngLat(116.40769, 39.89945)
       }

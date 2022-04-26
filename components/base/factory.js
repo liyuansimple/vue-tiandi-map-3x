@@ -4,8 +4,8 @@ export function createLngLat(T, options = {}) {
 }
 
 export function createPoint (T, options = {}) {
-  const {lng, lat} = options
-  return new T.Point(lng, lat)
+  const {x, y} = options
+  return new T.Point(x, y)
 }
 
 export function createBounds (T, options = {}) {
