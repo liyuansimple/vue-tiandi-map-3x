@@ -6,7 +6,7 @@ import TiandiMap from '../components/index.js'
 
 const app = createApp(App)
 app.use(TiandiMap,{
-  ak: ''
+  ak: '12bc70e7e8d603fe4253fd0b69e21744'
 })
 app.mount('#app')
 

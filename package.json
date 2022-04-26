@@ -2,10 +2,10 @@
   "name": "vue-tiandi-map-3x",
   "version": "1.0.1",
   "description": "",
-  "main": "/components/index.js",
+  "main": "./components/index.js",
   "scripts": {
-    "dev": "webpack serve --mode development --config build/webpack.config.js",
-    "build": "webpack --config build/webpack.config.js",
+    "dev": "webpack serve --mode development --config build/webpack.docs.config.js",
+    "build": "webpack --config build/webpack.prod.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,7 +23,10 @@
     "vue": "^3.2.31"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
     "@vue/compiler-sfc": "^3.2.33",
+    "babel-loader": "^8.2.5",
     "css-loader": "^6.7.1",
     "html-webpack-plugin": "^5.5.0",
     "sass": "^1.50.1",
